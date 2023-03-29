@@ -86,6 +86,18 @@ class BoardTestCase(unittest.TestCase):
         self.assertFalse(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a6b')))
         self.assertEqual(len(board.legal_moves), 2)
 
+    def test_suicide_promsui(self):
+        board = shogi.Board('1+z7/9/1G7/9/9/9/9/9/9 w - 1')
+        self.assertTrue(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a8b')))
+        self.assertTrue(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a9b')))
+        self.assertTrue(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a7b')))
+        self.assertFalse(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a6b')))
+        self.assertEqual(len(board.legal_moves), 2)
+
+    def test_suicide_promsui2(self):
+        board = shogi.Board('1+z6k/9/1G7/9/9/9/9/9/9 w - 1')
+        self.assertFalse(board.is_suicide_or_check_by_dropping_pawn(shogi.Move.from_usi('8a8b')))
+
     def test_check_by_dropping_pawn(self):
         # check by dropping pawn
         board = shogi.Board('kn7/9/1G7/9/9/9/9/9/9 b P 1')
@@ -151,18 +163,13 @@ class BoardTestCase(unittest.TestCase):
         self.assertTrue(shogi.Move.from_usi('3i3h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('6i7h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('6i6h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('6i5h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('4i5h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('4i4h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('4i3h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('2h7h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('2h6h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('2h5h') in board.legal_moves)
+        self.assertFalse(shogi.Move.from_usi('2h6h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('2h4h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('2h3h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('2h1h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('5i6h') in board.legal_moves)
-        self.assertTrue(shogi.Move.from_usi('5i5h') in board.legal_moves)
         self.assertTrue(shogi.Move.from_usi('5i4h') in board.legal_moves)
 
         # opposite turn
@@ -207,7 +214,7 @@ class BoardTestCase(unittest.TestCase):
         board = shogi.Board()
 
         board.push_usi_position_cmd("position startpos moves 7g7f")
-        self.assertEqual(board.sfen(), 'lnsgkgsnl/1r5b1/ppppppppp/9/9/2P6/PP1PPPPPP/1B5R1/LNSGKGSNL w - 2')
+        self.assertEqual(board.sfen(), 'lnsgkgsnl/1r2z2b1/ppppppppp/9/9/2P6/PP1PPPPPP/1B2Z2R1/LNSGKGSNL w - 2')
         board.push_usi_position_cmd("position sfen ln1g3+Rl/1ks4s1/pp1gppbpp/2p3N2/9/5P1P1/PPPP1S1bP/2K1R1G2/LNSG3NL w 4p 42")
         move = shogi.Move.from_usi('2g5d+')
         self.assertTrue(move in board.legal_moves)

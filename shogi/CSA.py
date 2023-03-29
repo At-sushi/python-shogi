@@ -33,7 +33,7 @@ BLOCK_RECV_SLEEP_DURATION = 0.1
 
 COLOR_SYMBOLS = ['+', '-']
 PIECE_SYMBOLS = ['* ', 'FU', 'KY', 'KE', 'GI', 'KI', 'KA', 'HI', 'OU',
-                       'TO', 'NY', 'NK', 'NG',       'UM', 'RY']
+                       'TO', 'NY', 'NK', 'NG',       'UM', 'RY', 'SU', 'TA']
 SQUARE_NAMES = [
     '91', '81', '71', '61', '51', '41', '31', '21', '11',
     '92', '82', '72', '62', '52', '42', '32', '22', '12',
@@ -232,13 +232,13 @@ class Parser:
             elif line[1] == 'I': # PI
                 position['pieces'] = [
                         (2, 1), (3, 1), (4, 1), (5, 1), (8, 1), (5, 1), (4, 1), (3, 1), (2, 1),
-                          None, (7, 1),   None,   None,   None,   None,   None, (6, 1),   None,
+                          None, (7, 1),   None,   None,(14, 1),   None,   None, (6, 1),   None,
                         (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1),
                           None,   None,   None,   None,   None,   None,   None,   None,   None,
                           None,   None,   None,   None,   None,   None,   None,   None,   None,
                           None,   None,   None,   None,   None,   None,   None,   None,   None,
                         (1, 0), (1, 0), (1, 0), (1, 0), (1, 0), (1, 0), (1, 0), (1, 0), (1, 0),
-                          None, (6, 0),   None,   None,   None,   None,   None, (7, 0),   None,
+                          None, (6, 0),   None,   None,(14, 0),   None,   None, (7, 0),   None,
                         (2, 0), (3, 0), (4, 0), (5, 0), (8, 0), (5, 0), (4, 0), (3, 0), (2, 0),
                     ]
                 index = 2

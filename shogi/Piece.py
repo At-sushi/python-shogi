@@ -5,11 +5,11 @@ from __future__ import unicode_literals
 from .Consts import *
 
 PIECE_SYMBOLS = ['',   'p',  'l',  'n',  's', 'g',  'b',  'r', 'k',
-                      '+p', '+l', '+n', '+s',      '+b', '+r']
+                      '+p', '+l', '+n', '+s',      '+b', '+r', 'z', '+z']
 PIECE_JAPANESE_SYMBOLS = [
     '',
     '歩', '香', '桂', '銀', '金', '角', '飛',
-    '玉', 'と', '杏', '圭', '全', '馬', '龍'
+    '玉', 'と', '杏', '圭', '全', '馬', '龍', '酔', '太'
 ]
 
 class Piece(object):
